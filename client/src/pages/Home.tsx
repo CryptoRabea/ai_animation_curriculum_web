@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ChevronRight, BookOpen, Zap, Grid3x3, Settings, Layers, Sparkles } from "lucide-react";
 import { useState } from "react";
+import { useLocation } from "wouter";
+import { getModuleSlug } from "@/lib/module-slugs";
 
 /**
  * Design Philosophy: Modern Tech-Forward Minimalism
@@ -11,7 +13,7 @@ import { useState } from "react";
  * - Smooth transitions and hover elevation effects
  */
 
-interface Module {
+interface ModuleItem {
   id: string;
   title: string;
   description: string;
@@ -22,7 +24,7 @@ interface Module {
   color: string;
 }
 
-const modules: Module[] = [
+const modules: ModuleItem[] = [
   {
     id: "module-1",
     title: "Foundations of AI Image Generation",
@@ -85,7 +87,8 @@ const modules: Module[] = [
   }
 ];
 
-function ModuleCard({ module, index }: { module: Module; index: number }) {
+function ModuleCard({ module, index }: { module: ModuleItem; index: number }) {
+  const [, navigate] = useLocation();
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -140,6 +143,7 @@ function ModuleCard({ module, index }: { module: Module; index: number }) {
           <Button
             variant="outline"
             className="w-full group/btn"
+            onClick={() => navigate(`/module/${getModuleSlug(module.id)}`)}
           >
             <span>Start Learning</span>
             <ChevronRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
