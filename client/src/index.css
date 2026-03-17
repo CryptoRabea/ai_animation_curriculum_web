@@ -43,39 +43,39 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  --primary: #1e3a8a;
+  --primary-foreground: #f0f9ff;
+  --sidebar-primary: #1e40af;
+  --sidebar-primary-foreground: #f0f9ff;
+  --chart-1: #06b6d4;
+  --chart-2: #0891b2;
+  --chart-3: #1e40af;
+  --chart-4: #1e3a8a;
+  --chart-5: #172554;
+  --radius: 0.75rem;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --secondary: #e0f2fe;
+  --secondary-foreground: #0c4a6e;
+  --muted: #cbd5e1;
+  --muted-foreground: #475569;
+  --accent: #06b6d4;
+  --accent-foreground: #082f49;
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+  --border: #e2e8f0;
+  --input: #f1f5f9;
+  --ring: #1e3a8a;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f172a;
+  --sidebar-accent: #06b6d4;
+  --sidebar-accent-foreground: #082f49;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #1e3a8a;
 }
 
 .dark {
@@ -174,4 +174,85 @@
       max-width: 1280px; /* Standard content width */
     }
   }
+}
+/* Typography System */
+.font-display {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.font-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.font-mono {
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Design System - Gradient Accents */
+.gradient-accent {
+  background: linear-gradient(135deg, #1e3a8a 0%, #06b6d4 100%);
+}
+
+.gradient-accent-light {
+  background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+}
+
+/* Elevated Card Styles */
+.card-elevated {
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background-color: var(--card);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-elevated:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: rgba(6, 182, 212, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Accent Line Divider */
+.divider-accent {
+  height: 4px;
+  width: 48px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #1e3a8a 0%, #06b6d4 100%);
+}
+
+/* Hero Section Styles */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(6, 182, 212, 0.1) 100%);
+}
+
+/* Module Card Animation */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideInUp 0.5s ease-out;
+}
+
+/* Progress Indicator Styles */
+.progress-ring {
+  transition: stroke-dashoffset 0.35s;
+  stroke-dasharray: 314;
+  stroke-dashoffset: 0;
 }
