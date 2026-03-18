@@ -11,7 +11,8 @@ import { useState } from "react";
  * Detailed module page showing lessons, objectives, and content preview
  */
 
-function LessonCard({ lesson, index, isLocked }: { lesson: Lesson; index: number; isLocked: boolean }) {
+function LessonCard({ lesson, index, isLocked, moduleId }: { lesson: Lesson; index: number; isLocked: boolean; moduleId: string }) {
+  const [, navigate] = useLocation();
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -94,13 +95,23 @@ function LessonCard({ lesson, index, isLocked }: { lesson: Lesson; index: number
           </div>
         )}
 
-        {/* Toggle Button */}
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="mt-4 text-sm font-heading text-blue-600 hover:text-blue-700 transition"
-        >
-          {isExpanded ? "Hide Details" : "View Details"}
-        </button>
+        {/* Action Buttons */}
+        <div className="mt-4 flex gap-2">
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="text-sm font-heading text-blue-600 hover:text-blue-700 transition"
+          >
+            {isExpanded ? "Hide Details" : "View Details"}
+          </button>
+          {!isLocked && (
+            <button
+              onClick={() => navigate(`/lesson/${moduleId}/${lesson.id}`)}
+              className="text-sm font-heading text-blue-600 hover:text-blue-700 transition ml-auto"
+            >
+              Start Lesson →
+            </button>
+          )}
+        </div>
       </div>
     </Card>
   );
@@ -198,6 +209,7 @@ function LessonsList({ module }: { module: Module }) {
           lesson={lesson}
           index={index}
           isLocked={false}
+          moduleId={module.id}
         />
       ))}
     </div>
