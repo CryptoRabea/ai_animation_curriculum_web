@@ -6,8 +6,10 @@ import { ChevronLeft, Clock, BookOpen, Play, CheckCircle2, Lock, ArrowRight } fr
 import { getLessonById } from "@/lib/modules-data";
 import { getVideosByLessonId } from "@/lib/video-data";
 import { getQuestionsByLessonId } from "@/lib/quiz-data";
+import { getPromptTemplatesByLessonId, getWorkflowsByLessonId } from "@/lib/resources-data";
 import { VideoPlayer, VideoThumbnail } from "@/components/VideoPlayer";
 import { Quiz } from "@/components/Quiz";
+import { ResourcesSection } from "@/components/ResourcesSection";
 import { useState } from "react";
 
 /**
@@ -29,6 +31,8 @@ export default function LessonContent() {
   const lesson = moduleId && lessonId ? getLessonById(moduleId, lessonId) : undefined;
   const videos = lessonId ? getVideosByLessonId(lessonId) : [];
   const quizQuestions = lessonId ? getQuestionsByLessonId(lessonId) : [];
+  const promptTemplates = lessonId ? getPromptTemplatesByLessonId(lessonId) : [];
+  const workflowFiles = lessonId ? getWorkflowsByLessonId(lessonId) : [];
 
   if (!lesson) {
     return (
@@ -124,13 +128,16 @@ export default function LessonContent() {
       <section className="py-12 md:py-16">
         <div className="container max-w-5xl">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsList className="grid w-full grid-cols-4 mb-8">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="videos">
                 Videos {videos.length > 0 && <span className="ml-2 text-xs">({videos.length})</span>}
               </TabsTrigger>
               <TabsTrigger value="quiz">
                 Quiz {quizQuestions.length > 0 && <span className="ml-2 text-xs">({quizQuestions.length})</span>}
+              </TabsTrigger>
+              <TabsTrigger value="resources">
+                Resources {(promptTemplates.length > 0 || workflowFiles.length > 0) && <span className="ml-2 text-xs">({promptTemplates.length + workflowFiles.length})</span>}
               </TabsTrigger>
             </TabsList>
 
@@ -275,6 +282,21 @@ export default function LessonContent() {
                   <Quiz questions={quizQuestions} lessonTitle={lesson.title} />
                 </div>
               )}
+            </TabsContent>
+
+            {/* Resources Tab */}
+            <TabsContent value="resources">
+              <div className="space-y-6">
+                <Card className="card-elevated p-6 bg-green-50 border border-green-200">
+                  <h3 className="font-heading text-foreground mb-2">
+                    Downloadable Resources
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Access prompt templates, workflow files, and reference guides to enhance your learning and practice.
+                  </p>
+                </Card>
+                <ResourcesSection promptTemplates={promptTemplates} workflowFiles={workflowFiles} />
+              </div>
             </TabsContent>
           </Tabs>
         </div>
