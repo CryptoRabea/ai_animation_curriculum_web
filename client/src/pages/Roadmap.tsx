@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { ChevronLeft } from "lucide-react";
-import { ProgressDashboard } from "@/components/ProgressDashboard";
+import { VisualRoadmap } from "@/components/VisualRoadmap";
 
 /**
  * Design Philosophy: Modern Tech-Forward Minimalism
- * Dedicated progress tracking page
+ * Dedicated roadmap page showing the complete learning journey
  */
 
-export default function Progress() {
+export default function Roadmap() {
   const [, navigate] = useLocation();
 
   return (
@@ -23,7 +23,7 @@ export default function Progress() {
             className="gap-2"
           >
             <ChevronLeft className="w-4 h-4" />
-            Back to Curriculum
+            Back to Home
           </Button>
         </div>
       </nav>
@@ -31,7 +31,7 @@ export default function Progress() {
       {/* Main Content */}
       <section className="py-12 md:py-16">
         <div className="container max-w-5xl">
-          <ProgressDashboard />
+          <VisualRoadmap />
         </div>
       </section>
 
@@ -43,16 +43,16 @@ export default function Progress() {
               <h3 className="font-heading text-foreground mb-4">Curriculum</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="/" className="hover:text-foreground transition cursor-pointer">All Modules</a></li>
+                <li><a href="/roadmap" className="hover:text-foreground transition cursor-pointer">Learning Roadmap</a></li>
                 <li><a href="/progress" className="hover:text-foreground transition cursor-pointer">My Progress</a></li>
-                <li><a onClick={() => navigate("/")} className="hover:text-foreground transition cursor-pointer">Resources</a></li>
               </ul>
             </div>
             <div>
-              <h3 className="font-heading text-foreground mb-4">Tools</h3>
+              <h3 className="font-heading text-foreground mb-4">Quick Links</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a onClick={() => navigate("/module/foundations-ai-image-generation")} className="hover:text-foreground transition cursor-pointer">Stable Diffusion</a></li>
-                <li><a onClick={() => navigate("/module/advanced-workflows-comfyui")} className="hover:text-foreground transition cursor-pointer">ComfyUI</a></li>
-                <li><a onClick={() => navigate("/module/forge-optimization")} className="hover:text-foreground transition cursor-pointer">Forge</a></li>
+                <li><a href="#" className="hover:text-foreground transition cursor-pointer">Documentation</a></li>
+                <li><a href="#" className="hover:text-foreground transition cursor-pointer">FAQ</a></li>
+                <li><a href="mailto:support@aianimationcurriculum.com" className="hover:text-foreground transition cursor-pointer">Contact</a></li>
               </ul>
             </div>
             <div>
@@ -64,11 +64,11 @@ export default function Progress() {
               </ul>
             </div>
             <div>
-              <h3 className="font-heading text-foreground mb-4">Support</h3>
+              <h3 className="font-heading text-foreground mb-4">Resources</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground transition cursor-pointer">FAQ</a></li>
-                <li><a href="mailto:support@aianimationcurriculum.com" className="hover:text-foreground transition cursor-pointer">Contact</a></li>
-                <li><a href="#" className="hover:text-foreground transition cursor-pointer">Feedback</a></li>
+                <li><a href="#" className="hover:text-foreground transition cursor-pointer">Tutorials</a></li>
+                <li><a href="#" className="hover:text-foreground transition cursor-pointer">Tools</a></li>
+                <li><a href="#" className="hover:text-foreground transition cursor-pointer">Models</a></li>
               </ul>
             </div>
           </div>

@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import ModuleDetail from "./pages/ModuleDetail";
 import LessonContent from "./pages/LessonContent";
 import Progress from "./pages/Progress";
+import Roadmap from "./pages/Roadmap";
 
 
 function Router() {
@@ -18,6 +19,7 @@ function Router() {
       <Route path={"/module/:slug"} component={ModuleDetail} />
       <Route path={"/lesson/:moduleId/:lessonId"} component={LessonContent} />
       <Route path={"/progress"} component={Progress} />
+      <Route path={"/roadmap"} component={Roadmap} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

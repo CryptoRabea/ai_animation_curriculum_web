@@ -170,6 +170,9 @@ export default function Home() {
             <h1 className="font-heading text-xl text-foreground">AI Animation Curriculum</h1>
           </div>
           <div className="flex items-center gap-3">
+            <Button variant="ghost" size="sm" onClick={() => navigate("/roadmap")}>
+              Roadmap
+            </Button>
             <Button variant="ghost" size="sm" onClick={() => navigate("/progress")}>
               My Progress
             </Button>
@@ -210,10 +213,13 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="gradient-accent text-white border-0">
+              <Button size="lg" className="gradient-accent text-white border-0" onClick={() => navigate("/module/foundations-ai-image-generation")}>
                 Start Learning Now
               </Button>
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="outline" onClick={() => {
+                const element = document.getElementById('modules-section');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}>
                 View Curriculum
               </Button>
             </div>
@@ -238,7 +244,7 @@ export default function Home() {
       </section>
 
       {/* Modules Section */}
-      <section className="py-16 md:py-24 bg-white/50">
+      <section id="modules-section" className="py-16 md:py-24 bg-white/50">
         <div className="container">
           {/* Section Header */}
           <div className="mb-12">
