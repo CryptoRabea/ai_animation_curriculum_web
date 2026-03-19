@@ -4,9 +4,11 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { ProgressProvider } from "./contexts/ProgressContext";
 import Home from "./pages/Home";
 import ModuleDetail from "./pages/ModuleDetail";
 import LessonContent from "./pages/LessonContent";
+import Progress from "./pages/Progress";
 
 
 function Router() {
@@ -15,6 +17,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/module/:slug"} component={ModuleDetail} />
       <Route path={"/lesson/:moduleId/:lessonId"} component={LessonContent} />
+      <Route path={"/progress"} component={Progress} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -34,10 +37,12 @@ function App() {
         defaultTheme="light"
         // switchable
       >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
+        <ProgressProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+          </TooltipProvider>
+        </ProgressProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

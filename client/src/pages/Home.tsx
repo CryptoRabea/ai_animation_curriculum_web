@@ -155,6 +155,7 @@ function ModuleCard({ module, index }: { module: ModuleItem; index: number }) {
 }
 
 export default function Home() {
+  const [, navigate] = useLocation();
   const [expandedModule, setExpandedModule] = useState<string | null>(null);
 
   return (
@@ -168,9 +169,14 @@ export default function Home() {
             </div>
             <h1 className="font-heading text-xl text-foreground">AI Animation Curriculum</h1>
           </div>
-          <Button variant="default" size="sm">
-            Get Started
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="sm" onClick={() => navigate("/progress")}>
+              My Progress
+            </Button>
+            <Button variant="default" size="sm">
+              Get Started
+            </Button>
+          </div>
         </div>
       </nav>
 
